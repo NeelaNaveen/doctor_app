@@ -17,13 +17,17 @@
   </div>
   <div class="field">
     <%= f.label :doctor %><br>
-    <%= f.text_field :doctor %>
+    <%#= f.text_field :doctor_id %>
+    <%= collection_select(:first_name, :doctor_id, @doctors, :id, :first_name ) %>
+
   </div>
   <div class="field">
     <%= f.label :patient %><br>
-    <%= f.text_field :patient %>
+    <%#= f.text_field :patient_id %>
+     <%= collection_select(:first_name, :patient_id, @patients, :id, :first_name ) %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+

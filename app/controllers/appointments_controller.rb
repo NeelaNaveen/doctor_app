@@ -15,22 +15,36 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
+    @doctors = Doctor.all
+    @patients = Patient.all
   end
 
   # GET /appointments/1/edit
   def edit
+    @doctors = Doctor.all
+    @patients = Patient.all
   end
 
   # POST /appointments
   # POST /appointments.json
   def create
+    p "*************************************"
+    p "*************************************"
+    p "*************************************"
+    p "*************************************"
+    p params
+    p "*************************************"
+    p "*************************************"
+    p "*************************************"
+    p "*************************************"
+    p "*************************************"
+    
     @appointment = Appointment.new(appointment_params)
-    @appointment.doctor_id = @appointment.doctor_id.to_i
-    @appointment.patient_id = @appointment.patient_id.to_i
-
+    @appointment.doctor_id = params[:first_name][:doctor_id].to_i
+    @appointment.patient_id = params[:first_name][:patient_id].to_i
+    
     respond_to do |format|
       if @appointment.save
-        
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
         format.json { render :show, status: :created, location: @appointment }
       else
@@ -72,6 +86,6 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:appointment, :doctor, :patient)
+      params.require(:appointment).permit(:appointment, :doctor_id, :patient_id)
     end
 end

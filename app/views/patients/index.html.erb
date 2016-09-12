@@ -9,7 +9,6 @@
       <th>Last name</th>
       <th>Age</th>
       <th>Contact</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +20,6 @@
         <td><%= patient.last_name %></td>
         <td><%= patient.age %></td>
         <td><%= patient.contact %></td>
-        <td><%= patient.user %></td>
         <td><%= link_to 'Show', patient %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
