@@ -19,4 +19,9 @@
  {
  border: 1px solid blue;
  }
- s
+	
+	{
+ background: url( asset-path('file-name.jpg') ) no-repeat;
+  background-size: 100% 100%;
+}
+ 

@@ -17,7 +17,7 @@
       <tr>
         <td><%= appointment.appointment %></td>
         <td><%= Doctor.find(appointment.doctor_id).first_name %></td>
-        <td><%= Patient.find(appointment.patient_id).first_name %></td>
+        <td><%#= Patient.find(appointment.patient_id).first_name %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
