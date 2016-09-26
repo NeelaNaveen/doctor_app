@@ -3,8 +3,14 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments
   # GET /appointments.json
-  def index
-    @appointments = Appointment.all
+  def index 
+    
+    if current_user.role == "Doctor"
+      @doctor = (Doctor.find_by user_id: current_user.id)
+      if @doctor.present? 
+        @appointments = @doctor.appointments
+      end
+    end
   end
 
   # GET /appointments/1
@@ -28,17 +34,6 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    p "*************************************"
-    p "*************************************"
-    p "*************************************"
-    p "*************************************"
-    p params
-    p "*************************************"
-    p "*************************************"
-    p "*************************************"
-    p "*************************************"
-    p "*************************************"
-    
     @appointment = Appointment.new(appointment_params)
     @appointment.doctor_id = params[:first_name][:doctor_id].to_i
     @appointment.patient_id = params[:first_name][:patient_id].to_i

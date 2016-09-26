@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<%= current_user.role == "Doctor" %>
 
 <h1>Listing Appointments</h1>
 
@@ -13,15 +14,19 @@
   </thead>
 
   <tbody>
-    <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.appointment %></td>
-        <td><%= Doctor.find(appointment.doctor_id).first_name %></td>
-        <td><%#= Patient.find(appointment.patient_id).first_name %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if @appointments.present? %>
+      <% @appointments.each do |appointment| %>
+        <tr>
+          <td><%= appointment.appointment %></td>
+          <td><%= Doctor.find(appointment.doctor_id).first_name %></td>
+          <td><%#= Patient.find(appointment.patient_id).first_name %></td>
+          <td><%= link_to 'Show', appointment %></td>
+          <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
+          <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <h1>No Appointmetns for Doctor ! </h1>
     <% end %>
   </tbody>
 </table>
